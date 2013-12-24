@@ -9,6 +9,9 @@ import time
 pre_installed_ext_folder = "/usr/share/gnome-shell/extensions"
 my_ext_folder = "{}/.local/share/gnome-shell/extensions".format(expanduser("~"))
 
+black_list = ["window-list@gnome-shell-extensions.gcampax.github.com"]
+white_list = []
+
 ######## GET EXTENSIONS ###########
 
 def getAllExtensions(): 
@@ -45,8 +48,17 @@ def disableOneExtension(extension):
 def restartGnomeShell():
 	popen("nohup gnome-shell --replace &")
 
+def disableBlackListExtensions():
+	for extension in black_list:
+		disableOneExtension(extension)
+
+def enableWhiteListExtensions():
+	for extension in white_list:
+		enableOneExtension(extension)
+
 ####### MAIN ##########
 
 if __name__ == '__main__':
 	time.sleep(2) # Just in case
 	enableAllExtensions()
+	disableBlackListExtensions()
