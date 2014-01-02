@@ -61,4 +61,5 @@ def enableWhiteListExtensions():
 if __name__ == '__main__':
 	time.sleep(2) # Just in case
 	enableAllExtensions()
+	time.sleep(2) # Just in case too
 	disableBlackListExtensions()
